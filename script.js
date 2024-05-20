@@ -49,3 +49,63 @@ navbar.addEventListener('dblclick', function() {
     head.appendChild(newBootstrapLink);
     }
 });
+
+// Fonctionnalité 6
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  var cards = document.querySelectorAll('.col-md-4');
+
+  for (let i = 0; i < cards.length; i++) {
+      let card = cards[i];
+      let viewButton = card.querySelector('.btn-success');
+      let cardImage = card.querySelector('.card-img-top');
+      let cardText = card.querySelector('.card-text');
+
+      let isCardReduced = false;
+      let hoverTimer;
+
+      viewButton.addEventListener('mouseover', function() {
+          if (!isCardReduced && !hoverTimer) {
+              hoverTimer = setTimeout(function() {
+                  cardImage.style.width = '20%';
+                  cardText.style.display = 'none';
+
+                  isCardReduced = true;
+              }, 200); // Délai de 200 millisecondes
+          }
+      });
+
+      viewButton.addEventListener('mouseout', function() {
+          if (isCardReduced && hoverTimer) {
+              clearTimeout(hoverTimer);
+              hoverTimer = null;
+
+              cardImage.style.width = '';
+              cardText.style.display = '';
+
+              isCardReduced = false;
+          }
+      });
+  }
+});
+
+
+//Fonctionnalité 7 et 8
+const nextButton = document.querySelector('.btn.btn-secondary');
+  
+nextButton.addEventListener('click', () => {
+  const cardContainer = document.querySelector('.album .container .row');
+  const cards = document.querySelectorAll('.album .container .row .col-md-4');
+  const lastCard = cards[cards.length - 1];
+  cardContainer.insertBefore(lastCard, cards[0]);
+});
+
+const prevButton = document.querySelector('.btn.btn-primary');
+
+prevButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  const cardContainer = document.querySelector('.album .container .row');
+  const cards = document.querySelectorAll('.album .container .row .col-md-4');
+  const firstCard = cards[0];
+  cardContainer.insertBefore(firstCard, null);
+});
