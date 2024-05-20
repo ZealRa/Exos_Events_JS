@@ -33,3 +33,19 @@ editButtonSecondCard.addEventListener('click', function(){
     secondCard.style.color = 'green';
   }
 })
+
+//Fonctionnalité 5
+
+var navbar = document.querySelector('.navbar');
+navbar.addEventListener('dblclick', function() {
+  var bootstrapLink = document.querySelector('link[href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"]');
+  if (bootstrapLink) {
+    bootstrapLink.parentNode.removeChild(bootstrapLink);
+  } else {
+    var head = document.querySelector('head');
+    var newBootstrapLink = document.createElement('link');
+    newBootstrapLink.rel = 'stylesheet';
+    newBootstrapLink.href = 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css';
+    head.appendChild(newBootstrapLink);
+    }
+});
