@@ -21,3 +21,15 @@ var editButton = firstCard.querySelector('.btn-outline-secondary');
 editButton.addEventListener('click', function(){
   firstCard.style.color = 'red';
 })
+
+//Fonctionnalité 4
+var secondCard = document.querySelectorAll('.col-md-4')[1];
+var editButtonSecondCard = secondCard.querySelector('.btn-outline-secondary');
+
+editButtonSecondCard.addEventListener('click', function(){
+  if (secondCard.style.color === 'green') {
+    secondCard.style.color = '';
+  } else {
+    secondCard.style.color = 'green';
+  }
+})
